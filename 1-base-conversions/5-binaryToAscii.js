@@ -22,7 +22,23 @@ const binaryStringToArray = str => {
 };
 
 const binaryToAscii = str => {
-  // Your code here
+  const bytes = binaryStringToArray(str);
+  const decimalValues = [];
+
+  bytes.forEach(byte => {
+    let sum = 0;
+
+    for (let i = byte.length - 1; i >= 0; i--){
+      let n = (byte.length-1) - i
+
+      sum += 2**n * Number(byte[i]);
+    }
+
+    decimalValues.push(sum);
+
+  });
+
+  return String.fromCharCode(...decimalValues);
 };
 
 /******************************************************************************/
